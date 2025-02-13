@@ -7,13 +7,13 @@ import (
 )
 
 type Flight struct {
-	Id          string
-	Number      string
-	AirlineName string
-	Source      string
-	Destination string
-	Capacity    int
-	Price       float32
+	Id          string  `json:"id"`
+	Number      string  `json :"number"`
+	AirlineName string  `json :"airline_name"`
+	Source      string  `json: "source"`
+	Destination string  `json:"destination"`
+	Capacity    int     `json: "capacity"`
+	Price       float32 `json: "price"`
 }
 
 func readFlightById(c *gin.Context) {
@@ -68,7 +68,7 @@ func main() {
 	r.PUT("/flights/:id", updateFlight)
 	r.DELETE("/flights/:id", deleteFlight)
 	//server default port is 8080
-	r.Run(":8080") //r.Run(":8081")
+	r.Run(":8081") //r.Run(":8081")
 
 	/*flight1 := Flight{Id: 1001, Number: "AI 800", AirlineName: "Air India", Source: "Mumbai", Destination: "Banglore", Capacity: 180, Price: 15000.00}
 	fmt.Println(flight1)*/
