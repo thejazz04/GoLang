@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PageHeader from "../header/PageHeader";
+import axios from "axios";
 
 function FlightList() {
-    const [flights,setFlights]=useState([
-        {id:"1010",number:"AI 400",airline_name:"AIR INDIA",source:"BNLR",destination:"MYS",capacity:180,price:5000.00},
-        {id:"1001",number:"AI 404",airline_name:"AIR INDIA",source:"MYS",destination:"BNLR",capacity:180,price:5000.00}
-    ]);
+    const [flights,setFlights]=useState([]);
+    const readAllFlights = async () =>{
+        try{
+            const baseUrl='http://localhost:8080'
+            const response = await axios.get(`${baseUrl}/flights`);
+            setFlights(response.data);
+        }
+        catch(error){
+            alert('Server Error');
+        }
+    };
+    useEffect(()=>{readAllFlights();},[]);
     return (
         <>
             <PageHeader PageNumber={1}/>

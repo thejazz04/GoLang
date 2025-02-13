@@ -12,7 +12,7 @@ import (
 type Flight struct {
 	Id          string  `json:"id"`
 	Number      string  `json:"number"`
-	ArilineName string  `json:"ariline_name"`
+	AirlineName string  `json:"airline_name"`
 	Source      string  `json:"source"`
 	Destination string  `json:"destination"`
 	Capacity    int     `json:"capacity"`
@@ -22,11 +22,11 @@ type Flight struct {
 func readAllFlights(c *gin.Context) {
 	flights := []Flight{
 		{Id: "1001", Number: "AI 845",
-			ArilineName: "Air India", Source: "Mumbai",
+			AirlineName: "Air India", Source: "Mumbai",
 			Destination: "Abu Dhabi", Capacity: 180,
 			Price: 15000.0},
 		{Id: "1002", Number: "AI 846",
-			ArilineName: "Air India", Source: "Abu Dhabi",
+			AirlineName: "Air India", Source: "Abu Dhabi",
 			Destination: "Mumbai", Capacity: 180,
 			Price: 15000.0},
 	}
@@ -36,7 +36,7 @@ func readAllFlights(c *gin.Context) {
 func readFlightById(c *gin.Context) {
 	id := c.Param("id")
 	flight := Flight{Id: id, Number: "AI 845",
-		ArilineName: "Air India", Source: "Mumbai",
+		AirlineName: "Air India", Source: "Mumbai",
 		Destination: "Abu Dhabi", Capacity: 180,
 		Price: 15000.0}
 	c.JSON(http.StatusOK, flight)
@@ -51,7 +51,7 @@ func createFlight(c *gin.Context) {
 		return
 	}
 	createdFlight := Flight{Id: "1001", Number: "AI 845",
-		ArilineName: "Air India", Source: "Mumbai",
+		AirlineName: "Air India", Source: "Mumbai",
 		Destination: "Abu Dhabi", Capacity: 180, Price: 15000.0}
 	c.JSON(http.StatusCreated,
 		gin.H{"message": "Flight Created Successfully.",
@@ -68,7 +68,7 @@ func updateFlight(c *gin.Context) {
 		return
 	}
 	updatedFlight := Flight{Id: id, Number: "AI 845", //
-		ArilineName: "Air India", Source: "Mumbai",
+		AirlineName: "Air India", Source: "Mumbai",
 		Destination: "Abu Dhabi", Capacity: 180, Price: 15000.0}
 	c.JSON(http.StatusOK,
 		gin.H{"message": "Flight Updated Successfully.", //
